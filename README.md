@@ -1,3 +1,5 @@
+[![CI](https://github.com/TheGalaxyHunter/intent-slot-filling/actions/workflows/ci.yml/badge.svg)](https://github.com/TheGalaxyHunter/intent-slot-filling/actions/workflows/ci.yml)
+
 # intent-slot-filling
 
 **Joint intent classification and slot filling for conversational AI.**
