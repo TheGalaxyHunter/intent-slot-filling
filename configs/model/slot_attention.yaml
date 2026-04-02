@@ -1,0 +1,20 @@
+# Slot attention model configuration.
+# Uses intent-conditioned attention for slot filling.
+
+model:
+  name: slot_attention
+  pretrained_model_name: bert-base-uncased
+  hidden_size: 768
+
+intent_head:
+  dropout: 0.1
+  hidden_dim: null
+
+slot_head:
+  dropout: 0.1
+  hidden_dim: 256
+  use_crf: true
+  attention:
+    num_heads: 8
+    use_intent_context: true  # condition slot attention on predicted intent
+    gate_mechanism: true      # learned gate to modulate intent influence

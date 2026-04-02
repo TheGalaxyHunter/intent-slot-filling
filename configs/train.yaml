@@ -1,0 +1,44 @@
+# Training configuration for joint intent classification and slot filling.
+
+training:
+  seed: 42
+  epochs: 50
+  batch_size: 32
+  gradient_accumulation_steps: 1
+  learning_rate: 5.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.1
+  max_grad_norm: 1.0
+  fp16: false
+
+loss:
+  intent_weight: 1.0
+  slot_weight: 1.0
+
+data:
+  dataset: atis  # atis or snips
+  max_seq_length: 50
+  train_split: train
+  eval_split: test
+
+optimizer:
+  name: adamw
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+
+scheduler:
+  name: linear_with_warmup
+
+logging:
+  log_every_n_steps: 50
+  eval_every_n_steps: 500
+  save_every_n_steps: 1000
+  wandb:
+    enabled: false
+    project: intent-slot-filling
+    entity: null
+
+output:
+  dir: runs/
+  save_best: true
+  metric_for_best: sentence_acc

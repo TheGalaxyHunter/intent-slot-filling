@@ -1,0 +1,21 @@
+# JointBERT model configuration.
+# BERT-based joint model with separate intent and slot heads.
+
+model:
+  name: joint_bert
+  pretrained_model_name: bert-base-uncased
+  hidden_size: 768
+
+intent_head:
+  dropout: 0.1
+  hidden_dim: null  # null means direct projection from encoder
+
+slot_head:
+  dropout: 0.1
+  hidden_dim: 256  # intermediate projection before slot logits
+  use_crf: true
+
+tokenizer:
+  pretrained_model_name: bert-base-uncased
+  add_special_tokens: true
+  pad_to_max_length: true
