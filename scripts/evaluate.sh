@@ -19,7 +19,7 @@ fi
 echo "Evaluating model from: ${MODEL_DIR}"
 echo ""
 
-python -c "
+uv run python -c "
 import json
 import torch
 from pathlib import Path

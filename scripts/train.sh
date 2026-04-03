@@ -18,7 +18,7 @@ echo "Training ${MODEL} on ${DATASET}"
 echo "Output: ${OUTPUT_DIR}"
 echo ""
 
-python -m src.training.trainer \
+uv run python -m src.training.trainer \
     --config configs/train.yaml \
     --model "configs/model/${MODEL}.yaml" \
     --dataset "${DATASET}" \

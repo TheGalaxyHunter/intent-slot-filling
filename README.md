@@ -60,17 +60,23 @@ A natural language understanding (NLU) system that jointly predicts user intent 
 
 ### Installation
 
+This project uses [uv](https://docs.astral.sh/uv/) for Python environment and dependency management.
+
 ```bash
+# Install uv (if you don't have it)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Clone and set up
 git clone https://github.com/TheGalaxyHunter/intent-slot-filling.git
 cd intent-slot-filling
-pip install -e .
+uv sync
 ```
 
 ### Training
 
 ```bash
 # Train JointBERT on ATIS
-python -m src.training.trainer \
+uv run python -m src.training.trainer \
     --config configs/train.yaml \
     --model configs/model/joint_bert.yaml \
     --dataset atis \
@@ -97,6 +103,20 @@ result = predictor("Book a flight from Boston to New York")
 print(result.intent)       # "BookFlight"
 print(result.slots)        # {"from_city": "Boston", "to_city": "New York"}
 print(result.confidence)   # 0.97
+```
+
+### Adding Dependencies
+
+```bash
+uv add <package>           # Add a runtime dependency
+uv add --group dev <pkg>   # Add a dev dependency
+```
+
+### Running Tests and Linting
+
+```bash
+uv run pytest              # Run tests
+uv run ruff check .        # Lint
 ```
 
 ## Results
